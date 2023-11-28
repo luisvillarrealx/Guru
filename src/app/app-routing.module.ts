@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PromptComponent } from './prompt/prompt.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'prompt', component: PromptComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
