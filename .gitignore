@@ -16,10 +16,6 @@
 *.js
 *.js.map
 
-# Compiled CSS files
-*.css
-*.css.map
-
 # Cache and build files
 *.cache
 *.zip
