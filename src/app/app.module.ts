@@ -4,14 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PromptComponent } from './prompt/prompt.component';
-import { ToggleClassDirective } from './app.component'; // Import your directive
+import { ToggleClassDirective } from './app.component';
+import { HomeComponent } from './home/home.component'; // Import your directive
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PromptComponent,
-    ToggleClassDirective
+    ToggleClassDirective,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
