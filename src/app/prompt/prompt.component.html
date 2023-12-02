@@ -1,18 +1,11 @@
-<div>
-  
-</div>
-<div class="chat-container">
-  <div class="chat-box">
-    <div class="message received">
-      <p>Hello there!</p>
+<div class="container">
+  <div class="all-chat">
+    <div *ngFor="let msg of messages" class="chat" [class.request]="msg.type === 'request'" [class.response]="msg.type === 'response'">
+      {{ msg.text }}
     </div>
-    <div class="message sent">
-      <p>Hi! How can I help you?</p>
-    </div>
-    <!-- More messages here -->
   </div>
-  <div class="user-input">
-    <input type="text" placeholder="Type your message..." />
-    <button>Send</button>
+  <div class="request-form">
+    <input type="text" class="new-input" id="req-input" placeholder="Ingresa tu pregunta..." [(ngModel)]="message" />
+    <button (click)="sendMessage()">Enviar</button>
   </div>
 </div>

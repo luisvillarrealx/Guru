@@ -1,52 +1,89 @@
-/* Basic styling */
-.chat-container {
-  width: 300px;
-  height: 400px;
-  border: 1px solid #ccc;
-  overflow-y: scroll;
-  padding: 10px;
+input { border-style: none; background: transparent; outline: none; }
+button { padding: 0; background: none; border: none; outline: none; }
+
+.all-chat {
+  color: #fff;
+  margin: 50px auto;
+  width: 80%;
 }
 
-.chat-box {
+.chat {
+  padding: 20px;
+ }
+
+ .chat.request {
+  background-color: #0d6e77;
+  border-radius: 13px 13px 2px 13px;
+  margin-left: 40px;
+ }
+
+ .chat.response {
+   background-color: #3a89a1;
+   border-radius: 13px 13px 13px 2px;
+   margin-right: 40px;
+ }
+
+ .chat:not(:last-child) {
+   margin-bottom: 15px;
+ }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
+}
+
+@keyframes gradient {
+  0%{background-position:0 0}
+  100%{background-position:100% 0}
+}
+
+.request-form {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 80%;
+  margin: 50px auto 10px auto;
+  border-radius: 2px;
+  padding: 1rem 2rem;
+  background: rgba(57, 63, 84, 0.8);
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    height: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+    background-size: 500% auto;
+    animation: gradient 3s linear infinite;
+  }
 }
 
-.message {
-  margin: 5px;
-  padding: 8px;
-  border-radius: 5px;
-  max-width: 70%;
+.request-form input {
+  flex-grow: 1;
+  color: #7881A1;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  &::-webkit-input-placeholder {
+    color: #7881A1;
+  }
 }
 
-.sent {
-  align-self: flex-end;
-  background-color: #DCF8C6;
-}
-
-.received {
-  align-self: flex-start;
-  background-color: #E5E5EA;
-}
-
-.user-input {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.user-input input {
-  flex: 1;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.user-input button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
-  color: white;
+.request-form button {
+  color:  #7881A1;
   cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  transition: color .25s;
+  &:hover {
+    color: #7881A1;
+  }
 }
