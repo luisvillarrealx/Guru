@@ -1,11 +1,17 @@
 <div class="container">
   <div class="all-chat">
+    <div class="welcome-message" *ngIf="messages.length === 0">
+      <p>Prepárate para ganar esa entrevista</p>
+    </div>
     <div *ngFor="let msg of messages" class="chat" [class.request]="msg.type === 'request'" [class.response]="msg.type === 'response'">
       {{ msg.text }}
     </div>
+    <div *ngIf="isLoading" class="loader"></div>
   </div>
-  <div class="request-form">
-    <input type="text" class="new-input" id="req-input" placeholder="Ingresa tu pregunta..." [(ngModel)]="message" />
-    <button (click)="sendMessage()">Enviar</button>
+  <div class="chat-footer">
+    <div class="request-form">
+      <input type="text" class="new-input" id="req-input" placeholder="Ingresa tu pregunta..." [(ngModel)]="message" />
+      <button (click)="sendMessage()">Enviar</button>
+    </div>
   </div>
 </div>

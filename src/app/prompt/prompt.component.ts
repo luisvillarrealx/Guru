@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PromptService } from '../prompt.service';
 
 @Component({
@@ -9,33 +9,35 @@ import { PromptService } from '../prompt.service';
 export class PromptComponent {
   messages: { type: string, text: string }[] = [];
   message: string = '';
+  isLoading: boolean = false;
+
 
   constructor(private promptService: PromptService) {}
 
   sendMessage(): void {
     if (this.message.trim()) {
+      console.log(this.message)
+      this.isLoading = true;
       const messageToSend = this.message.trim();
-      this.messages.push({ type: 'request', text: messageToSend }); // Store user's question
+      this.messages.push({ type: 'request', text: messageToSend });
 
       this.promptService.sendPromptRequest(messageToSend).subscribe(
         (response) => {
-          // Handle the response from OpenAI here
-          console.log(response);
-          this.messages.push({ type: 'response', text: response.choices[0].text }); // Store model's response
+          this.messages.push({ type: 'response', text: response.choices[0].text });
+          this.isLoading = false;
         },
         (error) => {
-          // Handle error responses
           console.error('Error:', error);
         }
       );
-      this.message = ''; // Clear the input field after sending
+      this.message = '';
     }
   }
 
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterKey(event: KeyboardEvent): void {
     if (event.target instanceof HTMLInputElement) {
-      this.sendMessage(); // Trigger sendMessage() on pressing Enter in the input field
+      this.sendMessage();
     }
   }
 }
