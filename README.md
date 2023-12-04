@@ -25,7 +25,7 @@ git clone https://github.com/luisvillarrealx/Guru.git
 ```
 2. Run npm install to install dependencies.
 ```js
-nmp i
+npm i
 ```
 3. Add your API key in the file `prompt.service.ts`
 
