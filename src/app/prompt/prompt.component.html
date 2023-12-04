@@ -3,7 +3,12 @@
     <div class="welcome-message" *ngIf="messages.length === 0">
       <p>Prepárate para ganar esa entrevista</p>
     </div>
-    <div *ngFor="let msg of messages" class="chat" [class.request]="msg.type === 'request'" [class.response]="msg.type === 'response'">
+    <div class="suggested-questions" *ngIf="messages.length === 0">
+      <div *ngFor="let question of suggestedQuestions" (click)="insertSuggestedQuestion(question)" class="suggested-question-card">
+        {{ question }}
+      </div>
+    </div>
+    <div *ngFor="let msg of messages" class="chat" [class.request]="msg.type === 'request'" [class.response]="msg.type === 'response'" [class.error]="msg.type === 'error'">
       {{ msg.text }}
     </div>
     <div *ngIf="isLoading" class="loader"></div>

@@ -14,8 +14,19 @@ export class PromptComponent {
 
   constructor(private promptService: PromptService) {}
 
+  suggestedQuestions: string[] = [
+    'Dame consejos para mi entrevista',
+    'Qué debo incluir mi curriculum',
+    'Cómo debo prepararme para una entrevista de trabajo',
+  ];
+
+  insertSuggestedQuestion(question: string): void {
+    this.message = question;
+    this.sendMessage();
+  }
+
   isInterviewQuestion(question: string): boolean {
-    const interviewRegex = /(interview|prepare|job|work|career|hire|role|position|resume|curriculum|cv)/gi;
+    const interviewRegex = /(entrevista|interview|prepare|job|work|trabajo|career|hire|role|position|resume|curriculum|cv)/gi;
     return interviewRegex.test(question);
   }
 
@@ -43,7 +54,8 @@ export class PromptComponent {
           this.isLoading = false;
         },
         (error) => {
-          console.error('Error:', error);
+          this.messages.push({ type: 'error', text: 'Error. No se logró establecer conexión' });
+          console.log(error);
           this.isLoading = false;
         }
       );
