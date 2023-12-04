@@ -10,15 +10,31 @@ export class PromptComponent {
   messages: { type: string, text: string }[] = [];
   message: string = '';
   isLoading: boolean = false;
-
+  showPopup: boolean = false;
 
   constructor(private promptService: PromptService) {}
 
+  isInterviewQuestion(question: string): boolean {
+    const interviewRegex = /(interview|prepare|job|work|career|hire|role|position|resume|curriculum|cv)/gi;
+    return interviewRegex.test(question);
+  }
+
+  dismissPopup(): void {
+    this.showPopup = false;
+    this.message = '';
+  }
+
   sendMessage(): void {
     if (this.message.trim()) {
-      console.log(this.message)
       this.isLoading = true;
       const messageToSend = this.message.trim();
+
+      if (!this.isInterviewQuestion(messageToSend)) {
+        this.showPopup = true;
+        this.isLoading = false;
+        return;
+      }
+
       this.messages.push({ type: 'request', text: messageToSend });
 
       this.promptService.sendPromptRequest(messageToSend).subscribe(
@@ -28,6 +44,7 @@ export class PromptComponent {
         },
         (error) => {
           console.error('Error:', error);
+          this.isLoading = false;
         }
       );
       this.message = '';
