@@ -4,7 +4,7 @@
       <p>Prepárate para ganar esa entrevista</p>
     </div>
     <div class="suggested-questions" *ngIf="messages.length === 0">
-      <div *ngFor="let question of suggestedQuestions" (click)="insertSuggestedQuestion(question)" class="suggested-question-card">
+      <div *ngFor="let question of randomQuestions" (click)="insertSuggestedQuestion(question)" class="suggested-question-card">
         {{ question }}
       </div>
     </div>

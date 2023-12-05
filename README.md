@@ -1,4 +1,4 @@
-# Guru - Interviews Coach
+# Guru - Interviews Coach 💻
 
 `Guru` is your virtual interview coach, meticulously crafted to guide you through the intricacies of interview preparation. With `Guru`, access a wealth of resources, from expert tips to comprehensive guidance, all aimed at sharpening your interview skills.
 
@@ -16,6 +16,15 @@ Engage in lifelike mock interviews, receive valuable feedback, and track your pr
 <a href="https://www.postman.com/" title="Postman"><img src="README/postman.png" height="55px"/></a>
 <a href="https://git-scm.com/" title="Git"><img src="README/git.png" height="55px"/></a>
 
+**Views**
+
+![Home page](README/home.png)
+
+![Home page](README/prompt.png)
+
+**Demo**
+
+![Home page](README/demo.gif)
 
 **Installation**
 
@@ -27,7 +36,7 @@ git clone https://github.com/luisvillarrealx/Guru.git
 ```js
 npm i
 ```
-3. Add your API key in the file `prompt.service.ts`
+3. Add your API key in the file `src/app/prompt.service.ts`
 
 ```js
 private apiKey = 'YOUR_API_KEY';

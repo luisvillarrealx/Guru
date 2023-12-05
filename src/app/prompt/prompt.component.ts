@@ -11,13 +11,28 @@ export class PromptComponent {
   message: string = '';
   isLoading: boolean = false;
   showPopup: boolean = false;
+  randomQuestions: string[] = [];
 
   constructor(private promptService: PromptService) {}
+  ngOnInit(): void {
+    this.randomQuestions = this.getMultipleRandom(this.suggestedQuestions, 3);
+  }
+
+  getMultipleRandom(suggestedQuestions: string[], num: number) {
+    const shuffled = [...suggestedQuestions].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  }
 
   suggestedQuestions: string[] = [
     'Dame consejos para mi entrevista',
     'Qué debo incluir mi curriculum',
     'Cómo debo prepararme para una entrevista de trabajo',
+    'Cómo puedo destacar mis habilidades y experiencia en mi currículum',
+    'Qué tipos de preguntas debo esperar durante una entrevista',
+    'Ejemplos de preguntas que puedo hacerle al entrevistador',
+    'Cómo puedo abordar y explicar las brechas en mi historial laboral',
+    'Cómo puedo mejorar mi presencia y marca personal durante la entrevista',
+    'Qué estrategias puedo utilizar para negociar el salario en una entrevista'
   ];
 
   insertSuggestedQuestion(question: string): void {
@@ -26,7 +41,7 @@ export class PromptComponent {
   }
 
   isInterviewQuestion(question: string): boolean {
-    const interviewRegex = /(entrevista|interview|prepare|job|work|trabajo|career|hire|role|position|resume|curriculum|cv)/gi;
+    const interviewRegex = /(entrevista|entrevistador|laboral|interview|prepare|job|work|trabajo|career|hire|role|position|resume|curriculum|cv)/gi;
     return interviewRegex.test(question);
   }
 
