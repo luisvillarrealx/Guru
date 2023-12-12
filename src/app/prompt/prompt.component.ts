@@ -25,7 +25,7 @@ export class PromptComponent {
 
   suggestedQuestions: string[] = [
     'Dame consejos para mi entrevista',
-    'Qué debo incluir mi curriculum',
+    'Qué debe incluir mi curriculum',
     'Cómo debo prepararme para una entrevista de trabajo',
     'Cómo puedo destacar mis habilidades y experiencia en mi currículum',
     'Qué tipos de preguntas debo esperar durante una entrevista',

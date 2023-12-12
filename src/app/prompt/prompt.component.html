@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="all-chat">
+  <div class="all-chat" role="region" aria-labelledby="chat-heading" aria-live="polite">
     <div class="welcome-message" *ngIf="messages.length === 0">
       <p>Prepárate para ganar esa entrevista</p>
     </div>
     <div class="suggested-questions" *ngIf="messages.length === 0">
-      <div *ngFor="let question of randomQuestions" (click)="insertSuggestedQuestion(question)" class="suggested-question-card">
+      <div *ngFor="let question of randomQuestions" (keydown.enter)="insertSuggestedQuestion(question)" tabindex="0" class="suggested-question-card">
         {{ question }}
       </div>
     </div>
@@ -16,12 +16,13 @@
   <div class="chat-footer">
     <div class="request-form">
       <input type="text" class="new-input" autocomplete="off" id="req-input" placeholder="Ingresa tu pregunta..." [(ngModel)]="message" />
-      <button (click)="sendMessage()">Enviar</button>
+      <button (click)="sendMessage()" type="button" aria-label="Enviar mensaje">Enviar</button>
     </div>
   </div>
-  <div *ngIf="showPopup" class="overlay"></div>
-  <div *ngIf="showPopup" class="popup">
-    <p>Guru únicamente atiende consultas relacionadas a entrevistas de trabajo</p>
-    <button (click)="dismissPopup()" class="btn btn-primary btn-close">Cerrar</button>
-  </div>
+  <div *ngIf="showPopup" class="overlay" (keydown.escape)="dismissPopup()" tabindex="0"></div>
+<div *ngIf="showPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-heading" tabindex="-1">
+  <p>Guru únicamente atiende consultas relacionadas a entrevistas de trabajo</p>
+  <p class="popup-note">Incluye palabras como: trabajo, entrevista, curriculum</p>
+  <button (click)="dismissPopup()" class="btn btn-primary btn-close">Cerrar</button>
+</div>
 </div>

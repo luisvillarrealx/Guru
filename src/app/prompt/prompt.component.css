@@ -157,6 +157,10 @@ button { padding: 0; background: none; border: none; outline: none; }
   margin-bottom: 10px;
 }
 
+.popup-note {
+  font-size: 18px;
+}
+
 .btn-close {
   background-color: #007bff;
   color: #fff;
