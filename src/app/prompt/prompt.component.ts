@@ -41,7 +41,7 @@ export class PromptComponent {
   }
 
   isInterviewQuestion(question: string): boolean {
-    const interviewRegex = /(entrevista|entrevistador|laboral|interview|prepare|job|work|trabajo|career|hire|role|position|resume|curriculum|cv)/gi;
+    const interviewRegex = /(entrevista|entrevistador|laboral|interview|prepare|job|work|trabajo|career|hire|role|position|resume|curriculum|currículum|cv)/gi;
     return interviewRegex.test(question);
   }
 

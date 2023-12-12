@@ -1,12 +1,18 @@
 <div class="container">
   <div class="all-chat" role="region" aria-labelledby="chat-heading" aria-live="polite">
     <div class="welcome-message" *ngIf="messages.length === 0">
+      <a class="screenreader-link" target="_blank" href="https://chromewebstore.google.com/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn">ChromeVox para mayor accesibilidad</a>
       <p>Prepárate para ganar esa entrevista</p>
     </div>
     <div class="suggested-questions" *ngIf="messages.length === 0">
-      <div *ngFor="let question of randomQuestions" (keydown.enter)="insertSuggestedQuestion(question)" tabindex="0" class="suggested-question-card">
+        <div *ngFor="let question of randomQuestions"
+        (keydown.enter)="insertSuggestedQuestion(question)"
+        (click)="insertSuggestedQuestion(question)"
+        tabindex="0"
+        class="suggested-question-card">
         {{ question }}
-      </div>
+    </div>
+
     </div>
     <div *ngFor="let msg of messages" class="chat" [class.request]="msg.type === 'request'" [class.response]="msg.type === 'response'" [class.error]="msg.type === 'error'">
       {{ msg.text }}

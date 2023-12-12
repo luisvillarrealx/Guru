@@ -195,3 +195,23 @@ button { padding: 0; background: none; border: none; outline: none; }
   background-color: #f9f9f9;
   color: #000;
 }
+
+.screenreader-link {
+  display: block;
+  width: 500px;
+  margin: 0 auto 30px;
+  padding: 10px;
+  text-align: center;
+  color: black;
+  background-color: lightgreen;
+  text-decoration: none;
+  border: 2px solid darkgreen;
+  border-radius: 5px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.screenreader-link:hover {
+  background-color: limegreen;
+  border-color: green;
+}
